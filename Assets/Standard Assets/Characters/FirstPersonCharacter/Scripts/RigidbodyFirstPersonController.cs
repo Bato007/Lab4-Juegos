@@ -91,6 +91,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         // Mis variables
         private int scoreI = 0;
+        public UnityEngine.UI.Text score;
 
         public Vector3 Velocity
         {
@@ -139,7 +140,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             if (Input.GetMouseButtonDown(0))      
             {
-                Ray myRay = Camera.main.ScreenPointToRay(new Vector3(0.5f, 0.5f));
+                Ray myRay = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f));
                 RaycastHit hitInfo;
 
                 if (Physics.Raycast(myRay, out hitInfo))
@@ -151,6 +152,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
                         scoreI++;
                     }
                 }
+            }
+
+            if (score)
+            {
+                score.text = "Targets Destroyed: " + scoreI.ToString() + "/5";
             }
 
         }

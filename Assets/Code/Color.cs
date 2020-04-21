@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Color : MonoBehaviour
 {
-    private static UnityEngine.Color black;
+
+    internal static UnityEngine.Color red;
     private static UnityEngine.Color white;
 
     // Start is called before the first frame update
@@ -19,9 +20,10 @@ public class Color : MonoBehaviour
         
     }
 
+
     private void OnMouseEnter()
     {
-        GetComponent<MeshRenderer>().material.color = Color.black;
+        GetComponent<MeshRenderer>().material.color = Color.red;
     }
 
     private void OnMouseExit()
