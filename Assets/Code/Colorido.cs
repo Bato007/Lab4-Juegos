@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Colorido : MonoBehaviour
 {
+
+    private AudioSource nani;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        nani = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -20,6 +23,7 @@ public class Colorido : MonoBehaviour
     private void OnMouseEnter()
     {
         GetComponent<MeshRenderer>().material.color = Color.red;
+        nani.Play();
     }
 
     private void OnMouseExit()

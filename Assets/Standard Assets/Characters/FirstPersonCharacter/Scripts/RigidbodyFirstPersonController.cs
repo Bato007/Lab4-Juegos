@@ -93,6 +93,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private int scoreI = 0;
         public UnityEngine.UI.Text score;
 
+        private AudioSource shoot;
+
         public Vector3 Velocity
         {
             get { return m_RigidBody.velocity; }
@@ -126,6 +128,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_RigidBody = GetComponent<Rigidbody>();
             m_Capsule = GetComponent<CapsuleCollider>();
             mouseLook.Init (transform, cam.transform);
+            shoot = GetComponents<AudioSource>()[1];
         }
 
 
@@ -147,11 +150,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 {
  
                     if (hitInfo.collider.CompareTag("Destroy"))
-                    {
+                    {    
                         Destroy(hitInfo.collider.gameObject);
                         scoreI++;
                     }
                 }
+                if (shoot) shoot.Play();
             }
 
             if (score)

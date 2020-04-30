@@ -6,10 +6,12 @@ using UnityEngine.SceneManagement;
 public class Mouse : MonoBehaviour
 {
 
+    private AudioSource back;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        back = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -35,6 +37,19 @@ public class Mouse : MonoBehaviour
         }
 
     }
+
+    public void lessVolumen()
+    {
+        if (back.volume > 0)
+            back.volume -= 0.1f;
+    }
+
+    public void moreVolumen()
+    {
+        if (back.volume < 100)
+            back.volume += 0.1f;
+    }
+
     public void ChangeScene(int indexScene)
     {
         SceneManager.LoadScene(indexScene);
